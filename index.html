@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Col Tech</title>
+    <meta name="description" content="South Col Tech - The final camp before the summit.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Hopeful, bright, summit palette
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9', // Clear Sky Blue
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                        sunrise: {
+                            300: '#fdba74', // Soft Orange
+                            500: '#f97316', // Vivid Orange
+                        },
+                        slate: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1.5s ease-out forwards',
+                        'slide-up': 'slideUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* 
+         * Background Image Configuration
+         */
+        .bg-scenic {
+            background-image: 
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.4)),
+                url('assets/images/site_bg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative overflow-x-hidden text-slate-800 bg-scenic">
+    
+    <!-- Ambient Light Effects (subtle if using simple gradient) -->
+    <div class="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-white via-transparent to-transparent z-0 pointer-events-none"></div>
+    
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center justify-center px-4 relative z-10 pt-20 pb-12">
+        
+        <!-- Hero Section -->
+        <div class="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
+            <!-- Logo / Brand Name -->
+            <div class="mb-10">
+                <h2 class="text-sm tracking-[0.3em] uppercase text-brand-600 font-semibold bg-brand-50 inline-block px-4 py-1 rounded-full border border-brand-100 shadow-sm">South Col Tech</h2>
+            </div>
+
+            <!-- Tagline -->
+            <h1 class="text-5xl md:text-7xl font-light tracking-tight text-slate-900 leading-tight">
+                The final camp <br class="hidden md:block" />
+                <span class="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-sunrise-500">before the summit.</span>
+            </h1>
+
+            <!-- Subheading -->
+            <p class="text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
+                South Col is the last staging ground before the top. We help you and your organization reduce complexity and reach your Everest.
+            </p>
+        </div>
+
+        <!-- Waitlist Section -->
+        <div class="w-full max-w-md mt-16 animate-slide-up" style="animation-delay: 0.3s;">
+            <div class="bg-white/80 backdrop-blur-md p-8 rounded-2xl border border-white shadow-xl ring-1 ring-slate-200/60">
+                <div class="mb-6 text-center">
+                    <h3 class="text-slate-900 font-medium text-lg">Begin Your Ascent</h3>
+                    <p class="text-slate-500 text-sm mt-1">Join the waitlist for early access.</p>
+                </div>
+                
+                <form class="space-y-4" onsubmit="event.preventDefault(); document.getElementById('success-message').classList.remove('hidden'); this.classList.add('hidden');">
+                    <div>
+                        <label for="email" class="sr-only">Email address</label>
+                        <input type="email" id="email" name="email" required 
+                            class="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 text-slate-900 placeholder-slate-400 transition-all outline-none shadow-sm"
+                            placeholder="name@company.com">
+                    </div>
+                    
+                    <div>
+                        <label for="type" class="sr-only">I am...</label>
+                        <div class="relative">
+                            <select id="type" name="type" 
+                                class="w-full px-4 py-3 bg-white border border-slate-200 rounded-lg focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 text-slate-700 appearance-none cursor-pointer transition-all outline-none shadow-sm">
+                                <option value="individual">I'm an Individual</option>
+                                <option value="team">I'm part of a Team / Organization</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" 
+                        class="w-full py-3 px-4 bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-700 hover:to-brand-600 text-white font-medium rounded-lg transition-all duration-200 transform hover:translate-y-[-1px] shadow-lg shadow-brand-500/20">
+                        Request Access
+                    </button>
+                </form>
+
+                <!-- Success Message -->
+                <div id="success-message" class="hidden text-center py-8">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-50 text-green-600 mb-4 ring-1 ring-green-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <p class="text-slate-900 font-medium">Your gear is packed.</p>
+                    <p class="text-sm text-slate-500 mt-2">We'll notify you when the window opens.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Credibility Section -->
+        <div class="mt-20 text-center animate-slide-up" style="animation-delay: 0.6s;">
+            <p class="text-sm text-slate-400 font-medium tracking-wide uppercase">
+                Built by experienced operators and technologists
+            </p>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 py-8 text-center border-t border-slate-200/50 mt-auto bg-white/40 backdrop-blur-sm">
+        <div class="flex justify-center space-x-6 text-sm text-slate-500">
+            <span>&copy; 2025 South Col Tech</span>
+            <a href="#" class="hover:text-brand-600 transition-colors">Privacy</a>
+            <a href="#" class="hover:text-brand-600 transition-colors">Terms</a>
+        </div>
+    </footer>
+
+</body>
+</html>
